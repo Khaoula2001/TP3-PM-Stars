@@ -58,7 +58,7 @@ public class StarAdapter extends RecyclerView.Adapter<StarAdapter.StarViewHolder
                 final RatingBar bar = popup.findViewById(R.id.ratingBar);
                 final TextView idss = popup.findViewById(R.id.idss);
 
-                Drawable drawable = ((ImageView)v.findViewById(R.id.img)).getDrawable();
+                Drawable drawable = ((ImageView) v.findViewById(R.id.img)).getDrawable();
                 if (drawable != null && drawable instanceof BitmapDrawable) {
                     Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
                     img.setImageBitmap(bitmap);
@@ -66,9 +66,8 @@ public class StarAdapter extends RecyclerView.Adapter<StarAdapter.StarViewHolder
                     // Handle the case where the drawable is null or not a BitmapDrawable
                     img.setImageResource(R.drawable.default_image); // Set a default image if needed
                 }
-
-                bar.setRating(((RatingBar)v.findViewById(R.id.stars)).getRating());
-                idss.setText(((TextView)v.findViewById(R.id.ids)).getText().toString());
+                bar.setRating(((RatingBar) v.findViewById(R.id.stars)).getRating());
+                idss.setText(((TextView) v.findViewById(R.id.ids)).getText().toString());
 
                 AlertDialog dialog = new AlertDialog.Builder(context)
                         .setTitle("Notez : ")
@@ -91,12 +90,13 @@ public class StarAdapter extends RecyclerView.Adapter<StarAdapter.StarViewHolder
             }
         });
 
+
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull StarViewHolder starViewHolder, int i) {
-        Log.d(TAG, "onBindView call ! "+ i);
+        Log.d(TAG, "onBindView call ! " + i);
         Glide.with(context)
                 .asBitmap()
                 .load(starsFilter.get(i).getImg())
@@ -104,7 +104,7 @@ public class StarAdapter extends RecyclerView.Adapter<StarAdapter.StarViewHolder
                 .into(starViewHolder.img);
         starViewHolder.name.setText(starsFilter.get(i).getName().toUpperCase());
         starViewHolder.stars.setRating(starsFilter.get(i).getStar());
-        starViewHolder.idss.setText(starsFilter.get(i).getId()+"");
+        starViewHolder.idss.setText(starsFilter.get(i).getId() + "");
     }
 
     @Override
